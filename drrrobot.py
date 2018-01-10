@@ -17,7 +17,7 @@ ts_last_greeting = 0
 
 class Song(object):
     def __init__(self, keyword):
-        locale.setlocale(locale.LC_CTYPE, 'chinese')
+        #locale.setlocale(locale.LC_CTYPE, 'chinese')
         self.keyword = keyword
         self.url_song = None
         self.name_song = None
@@ -26,7 +26,8 @@ class Song(object):
     # search in qq music library
     def qq_search(self):
         search = requests.get(
-            'http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=1&aggr=1&cr=1&loginUin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p=1&catZhida=0&remoteplace=sizer.newclient.next_song&w=%s' % requests.utils.quote(
+            'http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=1&aggr=1&cr=1&loginUin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p=1&catZhida=0&remoteplace=sizer.newclient.next_song&w=%s'
+            % requests.utils.quote(
                 self.keyword))
         resp_search = re.findall('f":"\d+\|.*?\|\d+\|.*?\|', search.text)
         if resp_search:
@@ -48,7 +49,7 @@ class Song(object):
 
 class Bot(object):
     def __init__(self, name, icon='bakyura-2x'):
-        locale.setlocale(locale.LC_CTYPE, 'chinese')
+        # locale.setlocale(locale.LC_CTYPE, 'chinese')
         self.name = name
         self.icon = icon
         self.session = requests.session()
@@ -169,7 +170,7 @@ class Bot(object):
                                     continue
                                 self.reply_greeting(message)
             if '"type":"join"' in ru.text:
-                self.post('/me 歡迎光臨，輕食咖啡館')
+                self.post('/me 歡迎光臨，Roshan Pit For 魔法JK')
             ru.close()
 
     def give_time(self):
@@ -186,7 +187,7 @@ class Bot(object):
                     time.sleep(1790)
 
     def post_time(self):
-        give_time = time.strftime('現在是中原標準時間 %Y年%m月%d日 %H時%M分', time.localtime(time.time()))
+        give_time = time.strftime('現在是RoshanPit時間 %Y年%m月%d日 %H時%M分', time.localtime(time.time()))
         self.post('/me %s' % give_time)
 
     def tips(self):
