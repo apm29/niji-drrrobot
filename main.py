@@ -5,11 +5,12 @@ import os
 import threading
 import time
 
-name = 'にじ#niji1997'
+name = 'ReRe#niji1997'
 icon = 'bakyura-2x'
 file_name = 'niji.cookie'
-url_room = raw_input('Input the [Room URL] ')
-
+#url_room = input('Input the [Room URL] ')
+url_room = 'http://drrr.com/room/?id=UVDBH9i6rX'
+#'http://drrr.com/room/?id=2Fn7Lv56at'
 niji = drrrobot.Bot(name=name,icon=icon)
 
 # NowTime Thread
@@ -37,5 +38,6 @@ while 1:
             if is_leave == True:
                 break
         time.sleep(5)
-    except:
-        print '[Err] Room update error at %s' % time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(time.time()))
+    except BaseException as e:
+        print(e)
+        print("[Err] Room update error at %s" % time.strftime('%Y/%m/%d %H:%M:%S', time.localtime(time.time())))
